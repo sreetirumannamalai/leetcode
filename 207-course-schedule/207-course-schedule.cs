@@ -1,11 +1,11 @@
 public class Solution {
     public bool CanFinish(int numCourses, int[][] prerequisites) {
+        if(numCourses == 0) return false;
         int[] visited = new int[numCourses];
-        //create an adjList
         Dictionary<int, List<int>> adjList = new Dictionary<int, List<int>>();
         for(int i=0;i<numCourses;i++)
         {
-             adjList.Add(i, new List<int>());
+            adjList.Add(i, new List<int>());
         }
         
         for(int i=0;i<prerequisites.Length;i++)
@@ -13,7 +13,6 @@ public class Solution {
             adjList[prerequisites[i][0]].Add(prerequisites[i][1]);
         }
         
-        //check for cycle
         for(int i=0;i<numCourses;i++)
         {
             if(visited[i] == 0)
@@ -34,7 +33,7 @@ public class Solution {
         {
             foreach(int neighbor in adjList[i])
             {
-                if(visited[neighbor] == 0 && hasCycle(neighbor,adjList, visited) || visited[neighbor] == 1)
+                if(visited[neighbor] == 0 && hasCycle(neighbor, adjList, visited) || visited[neighbor] == 1)
                 {
                     return true;
                 }
