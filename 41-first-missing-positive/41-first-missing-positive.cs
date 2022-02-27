@@ -1,7 +1,7 @@
 public class Solution {
     public int FirstMissingPositive(int[] nums) {
-        //O(n) sc O(1)
-        if(nums == null || nums.Length == 0)
+       //O(n) , sc O(1)
+        if(nums.Length == 0 || nums == null)
             return 1;
         
         int n = nums.Length;
@@ -16,22 +16,22 @@ public class Solution {
                 nums[i] = 1;
         }
         
-        if(containsOne == 0) 
+        if(containsOne == 0)
             return 1;
         
         //step 2
-        for(int i =0;i< n;i++)
+        for(int i=0;i<n;i++)
         {
             int index = Math.Abs(nums[i]) - 1;
             if(nums[index] > 0)
                 nums[index] = -1 * nums[index];
         }
-        
+       
         //step 3
-        for(int i=0;i< n;i++)
+        for(int i=0;i<n;i++)
         {
             if(nums[i] > 0)
-                return (i + 1);
+                return i+1;
         }
         
         //[1,2,3]-> 4
