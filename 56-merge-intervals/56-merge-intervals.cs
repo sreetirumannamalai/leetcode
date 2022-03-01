@@ -1,4 +1,5 @@
 public class Solution {
+    //O(nlogn) sc O(n) or O(nlogn)
     public int[][] Merge(int[][] intervals) {
       List<int[]> result = new List<int[]>();
       if(intervals.Length == 0)
