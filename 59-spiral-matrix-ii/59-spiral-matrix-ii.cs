@@ -6,41 +6,41 @@ public class Solution {
             matrix[i] = new int[n];
         }
 
-        int rowBegin = 0;
-        int rowEnd = n-1;
-        int colBegin = 0;
-        int colEnd = n-1;
+        int top = 0;// rowBegin = 0;
+        int bottom =n-1; // rowEnd = n-1;
+        int left = 0; //colBegin = 0;
+        int right =n-1; // colEnd = n-1;
         int counter = 1;
-        while(rowBegin <= rowEnd && colBegin <= colEnd)
+        while(top <= bottom && left <= right)
         {
-            for(int i=colBegin; i<=colEnd; i++)
+            for(int i = left;i<=right;i++)
             {
-                matrix[rowBegin][i] = counter++;
+                matrix[top][i] = counter++;
             }
-            rowBegin++;
-            for(int i =rowBegin;i<=rowEnd;i++)
+            top++;
+            for(int i  =top;i<=bottom;i++)
             {
-                matrix[i][colEnd]= counter++;
+                matrix[i][right]= counter++;
             }
-            colEnd--;
+            right--;
             
-            if(rowBegin <= rowEnd)
+            if(top <= bottom)
             {
-                for(int i = colEnd; i>= colBegin;i--)
+                for(int i = right; i>= left;i--)
                 {
-                    matrix[rowEnd][i] = counter++;
+                    matrix[bottom][i] = counter++;
                 }
             }
-            rowEnd--;
+            bottom--;
             
-            if(colBegin <= colEnd)
+            if(left <= right)
             {
-                for(int i= rowEnd; i>= rowBegin;i--)
+                for(int i= bottom; i>= top;i--)
                 {
-                    matrix[i][colBegin] = counter++;
+                    matrix[i][left] = counter++;
                 }
             }
-            colBegin++;
+            left++;
         }
         return matrix;
     }
