@@ -1,6 +1,6 @@
 public class Solution {
     public IList<int> SpiralOrder(int[][] matrix)
-{
+   {
         List<int> nums = new List<int>();
             if (matrix == null || matrix.Length == 0)
                 return nums;
