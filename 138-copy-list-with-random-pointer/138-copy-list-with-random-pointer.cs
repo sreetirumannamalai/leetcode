@@ -18,13 +18,14 @@ public class Solution {
     public Node CopyRandomList(Node head) {
         Node current = head;
         //1. copy node and insert after actual nodes
-        while(current!=null)
+        while(current != null)
         {
             Node copy = new Node(current.val);
             copy.next = current.next;
             current.next = copy;
             current = current.next.next;
         }
+         
         //2. map random pointer
         current = head;
         while(current != null)
@@ -32,7 +33,7 @@ public class Solution {
             current.next.random = current.random == null ? null : current.random.next;
             current = current.next.next;
         }
-        
+         
         //3. extract copy node
         Node dummyhead = new Node(-1);
         Node dummy = dummyhead;
@@ -44,6 +45,7 @@ public class Solution {
             current.next = current.next.next;
             current = current.next;
         }
+         
         return dummyhead.next;
     }
 }
