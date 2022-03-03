@@ -17,7 +17,6 @@ public class Solution {
         
         ListNode head = new ListNode();
         ListNode tail = head;
-        
         while(list1 != null && list2 != null)
         {
             if(list1.val < list2.val)
