@@ -10,6 +10,7 @@
  * }
  */
 public class Solution {
+    //O(n) sc O(1)
     public ListNode MergeKLists(ListNode[] lists) {
         if(lists.Length == 0) return null;
         
