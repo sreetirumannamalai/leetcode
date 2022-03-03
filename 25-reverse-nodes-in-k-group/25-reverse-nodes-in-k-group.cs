@@ -10,6 +10,7 @@
  * }
  */
 public class Solution {
+    //O(n) sc O(1)
     public ListNode ReverseKGroup(ListNode head, int k) {
         if(head == null) return head;
         
