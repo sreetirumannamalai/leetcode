@@ -13,12 +13,13 @@ public class LRUCache {
     int capacity = 0;
     Dictionary<int, LinkedListNode<Cache>> dict;
     LinkedList<Cache> lruList;
+    
     public LRUCache(int capacity) {
         dict = new Dictionary<int, LinkedListNode<Cache>>();
         lruList = new LinkedList<Cache>();
         this.capacity = capacity;
     }
-    
+     
     public int Get(int key) {
         if(!dict.ContainsKey(key))
             return -1;
@@ -30,11 +31,12 @@ public class LRUCache {
         return cache.Value.cacheValue;
     }
     
-    public void Put(int key, int value) {
+   
+    public void Put(int key, int value)
+    {
         if(dict.ContainsKey(key))
         {
             dict[key].Value.cacheValue = value;
-
             LinkedListNode<Cache> cache = dict[key];
             lruList.Remove(cache);
             lruList.AddFirst(cache);
@@ -52,7 +54,6 @@ public class LRUCache {
                 lruList.Remove(lastNode);
             }
         }
-        
     }
 }
 
