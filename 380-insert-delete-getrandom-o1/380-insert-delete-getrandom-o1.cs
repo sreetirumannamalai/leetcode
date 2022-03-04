@@ -1,4 +1,5 @@
 public class RandomizedSet {
+    //O(1) sc O(n)
     HashSet<int> set;
     List<int> list;
     Random random;
