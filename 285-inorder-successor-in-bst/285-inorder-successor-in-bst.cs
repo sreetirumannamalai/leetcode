@@ -10,8 +10,8 @@
 public class Solution {
     //O(n) sc O(1)
     public TreeNode InorderSuccessor(TreeNode root, TreeNode p) {
-        TreeNode successor = null;
-        while(root != null)
+       TreeNode successor = null;
+        while(root!= null)
         {
             if(p.val >= root.val)
             {
