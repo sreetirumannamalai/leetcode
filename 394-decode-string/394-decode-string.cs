@@ -1,14 +1,10 @@
 public class Solution {
-    //O(m * n) sc O(m + n)
     public string DecodeString(string s) {
-        if(s == null || s == string.Empty) return "";
-        
-        Stack<string> wordStack = new Stack<string>();
         Stack<int> countStack = new Stack<int>();
+        Stack<string> wordStack = new Stack<string>();
         StringBuilder sb = new StringBuilder();
         int number = 0;
-        
-        for(int i=0; i<s.Length;i++)
+        for(int i=0;i<s.Length;i++)
         {
             char c = s[i];
             if(Char.IsDigit(c))
@@ -19,7 +15,7 @@ public class Solution {
             {
                 sb.Append(c);
             }
-            else if(c == '[')
+            else if(c=='[')
             {
                 countStack.Push(number);
                 wordStack.Push(sb.ToString());
@@ -30,7 +26,7 @@ public class Solution {
             {
                 int count = countStack.Pop();
                 StringBuilder duplicateWord = new StringBuilder(wordStack.Pop());
-                for(int j =0;j<count;j++)
+                for(int j=0;j<count;j++)
                 {
                     duplicateWord.Append(sb);
                 }
