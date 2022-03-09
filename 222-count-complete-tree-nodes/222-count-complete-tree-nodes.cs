@@ -12,6 +12,7 @@
  * }
  */
 public class Solution {
+    //O(n) sc O(d), d is depth of the tree
     public int CountNodes(TreeNode root) {
         if(root == null) return 0;
         
