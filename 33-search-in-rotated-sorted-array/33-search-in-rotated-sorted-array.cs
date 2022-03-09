@@ -1,11 +1,11 @@
 public class Solution {
     public int Search(int[] nums, int target) {
-        //O(nlogn), sc O(1)
-        int start =0;
+        //O(nlogn) sc O(1)
+        int start = 0;
         int end = nums.Length - 1;
         while(start <= end)
         {
-            int mid = start + (end - start)/2;
+            int mid = start + (end - start) /2;
             if(nums[mid] == target)
                 return mid;
             else if(nums[mid] >= nums[start])
@@ -34,4 +34,3 @@ public class Solution {
         return -1;
     }
 }
-        
