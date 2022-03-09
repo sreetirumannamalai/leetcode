@@ -20,21 +20,22 @@ public class Solution {
         TreeNode right = root;
         
         int height_left = 0;
-        int height_right = 0;
+        int height_right= 0;
         while(left != null)
         {
             height_left++;
             left = left.left;
         }
+        
         while(right != null)
         {
             height_right++;
             right = right.right;
-        }
+        } 
         
         if(height_left == height_right)
-             return (1 << height_left ) - 1;
+            return (1 << height_left) - 1;
         else
-            return 1 + CountNodes(root.left) + CountNodes(root.right);      
+            return  1 + CountNodes(root.left) + CountNodes(root.right);      
     }
 }
