@@ -1,8 +1,9 @@
 public class Solution {
+    //O(m2 * n) m is the length of each word and n is number of words
     public int LadderLength(string beginWord, string endWord, IList<string> wordList) {
-        //TC O(m2 * n) m is length of each word and n is total number of words
-        if(wordList == null || wordList.Count == 0 || beginWord == null || endWord == null)
+        if(wordList.Count == 0 || wordList == null || beginWord == null || endWord == null)
             return 0;
+        
         HashSet<string> words = new HashSet<string>(wordList);
         words.Remove(beginWord);
         
@@ -17,7 +18,7 @@ public class Solution {
             {
                 string currentWord = queue.Dequeue();
                 if(currentWord.Equals(endWord))
-                    return level;
+                    return level++;
                 
                 List<string> neighbors = GetNeighbors(currentWord);
                 foreach(string neighbor in neighbors)
@@ -36,11 +37,12 @@ public class Solution {
     public List<string> GetNeighbors(string currentWord)
     {
         List<string> result = new List<string>();
+        
         char[] chars = currentWord.ToCharArray();
         for(int i=0;i<chars.Length;i++)
         {
             char temp = chars[i];
-            for(char c = 'a'; c <= 'z'; c++)
+            for(char c ='a'; c <='z';c++)
             {
                 chars[i] = c;
                 string newstring = new string(chars);
@@ -51,4 +53,3 @@ public class Solution {
         return result;
     }
 }
-   
