@@ -6,7 +6,7 @@ public class Solution {
             string[] map = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
             LetterCombinations_DFS(digits, map, result, new StringBuilder(), 0);
         }
-        return result;        
+        return result;
     }
     
     public void LetterCombinations_DFS(string digits, string[] map, List<string> result, StringBuilder sb, int index)
