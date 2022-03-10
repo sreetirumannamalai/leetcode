@@ -1,67 +1,76 @@
-class Solution {
+public class Solution {
     Dictionary<int, List<int>> graph;
     bool[] visited;
     bool[] explored;
-    Stack<int> stk;
+    Stack<int> stack;
     public int[] FindOrder(int numCourses, int[][] prerequisites) {
         graph = new Dictionary<int, List<int>>();
-        for(int i = 0; i < numCourses; i++){
+        explored = new bool[numCourses];
+        visited = new bool[numCourses];
+        stack = new Stack<int>();
+        
+        for(int i=0;i<numCourses;i++)
+        {
             graph.Add(i, new List<int>());
         }
-        for(int i = 0; i < prerequisites.Length; i++){
+        
+        for(int i=0;i<prerequisites.Length;i++)
+        {
             graph[prerequisites[i][1]].Add(prerequisites[i][0]);
         }
         
-        explored = new bool[numCourses];
-        visited = new bool[numCourses];
-        
-        for(int i = 0; i < numCourses; i++){
-            if(!visited[i]){
-                if(isCyclic(i)){
+        for(int i=0;i<numCourses;i++)
+        {
+            if(!visited[i])
+            {
+                if(hasCycle(i))
                     return new int[]{};
-                }
             }
         }
         
         visited = new bool[numCourses];
-        stk = new Stack<int>();
-        for(int i = 0; i < numCourses; i++){
-            if(!visited[i]){
+                
+        for(int i=0;i<numCourses;i++)
+        {
+            if(!visited[i])
+            {
                 topologicalSort(i);
             }
         }
         
-        int[] res = new int[stk.Count()];
-        for(int i = 0; i < res.Length; i++){
-            res[i] = stk.Pop();
+        int[] result = new int[stack.Count];
+        for(int i=0;i<result.Length;i++)
+        {
+            result[i] = stack.Pop();
         }
-        
-        return res;
+        return result;
     }
     
-    public bool isCyclic(int i){
+    public bool hasCycle(int i)
+    {
         visited[i] = true;
-        foreach(int j in graph[i]){
-            if(!visited[j]){
-                if(isCyclic(j)){
+        foreach(int neighbor in graph[i])
+        {
+            if(!visited[neighbor])
+            {
+                if(hasCycle(neighbor))
                     return true;
-                }
             }
-            else if(!explored[j]){
+            else if(!explored[neighbor])
                 return true;
-            }
         }
         explored[i] = true;
         return false;
     }
     
-    public void topologicalSort(int i){
+    public void topologicalSort(int i)
+    {
         visited[i] = true;
-        foreach(int j in graph[i]){
-            if(!visited[j]){
-                topologicalSort(j);
-            }
+        foreach(int neighbor in graph[i])
+        {
+            if(!visited[neighbor])
+                topologicalSort(neighbor);
         }
-        stk.Push(i);
+        stack.Push(i);
     }
 }
