@@ -1,27 +1,29 @@
-public class Solution {
-    private static Dictionary<int, string> trials;
-    
-    public Solution() {
-        trials = new Dictionary<int, string> {
+public class Solution 
+{
+    public string NumberToWords(int num) 
+    {
+      Dictionary<int, string> trials;
+      trials = new Dictionary<int,string>
+        {
             {1000000000, "{0} Billion {1}"},
             {1000000, "{0} Million {1}"},
             {1000, "{0} Thousand {1}"},
             {100, "{0} Hundred {1}"},
             {90, "Ninety {1}"},
-            {80, "Eighty {1}"},
-            {70, "Seventy {1}"},
-            {60, "Sixty {1}"},
-            {50, "Fifty {1}"},
-            {40, "Forty {1}"},
-            {30, "Thirty {1}"},
-            {20, "Twenty {1}"},
-            {19, "Nineteen"},
-            {18, "Eighteen"},
-            {17, "Seventeen"},
-            {16, "Sixteen"},
-            {15, "Fifteen"},
-            {14, "Fourteen"},
-            {13, "Thirteen"},            
+             {80, "Eighty {1}"},
+             {70, "Seventy {1}"},
+             {60, "Sixty {1}"},
+             {50, "Fifty {1}"},
+             {40, "Forty {1}"},
+             {30, "Thirty {1}"},
+             {20, "Twenty {1}"},
+             {19, "Nineteen {1}"},
+             {18, "Eighteen {1}"},
+             {17, "Seventeen {1}"},
+             {16, "Sixteen {1}"},
+             {15, "Fifteen {1}"},
+             {14, "Fourteen {1}"}, 
+            {13, "Thirteen {1}"},
             {12, "Twelve"},
             {11, "Eleven"},
             {10, "Ten"},
@@ -36,27 +38,23 @@ public class Solution {
             {1, "One"},
             {0, "Zero"}
         };
-    }
-    
-    public string NumberToWords(int num) {        
-        // Max 2,147,483,647
-        
-        foreach (var pair in trials) {
-            if (num <= 10 && num == pair.Key) {
+        foreach(var pair in trials)
+        {
+            if(num <= 10 && num == pair.Key)
                 return pair.Value;
-            }
             
             int n = num / pair.Key;
             num = num % pair.Key;
-            if (n >= 1) {
-                if (num == 0) {
+            if(n >= 1)
+            {
+                if(num == 0)
                     return string.Format(pair.Value, NumberToWords(n), "").Trim();
-                } else {
-                    return string.Format(pair.Value, NumberToWords(n), NumberToWords(num));
-                }
+                
+                else
+                    return string.Format(pair.Value, NumberToWords(n),NumberToWords(num));
+                    
             }
         }
-        
-        return "";
+        return string.Empty;
     }
 }
