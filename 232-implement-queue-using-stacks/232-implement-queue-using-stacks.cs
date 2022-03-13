@@ -11,7 +11,7 @@ public class MyQueue
 {
     private Stack<int> _pushStack;
     private Stack<int> _popStack;
-
+     
     /** Initialize your data structure here. */
     public MyQueue() 
     {
@@ -31,7 +31,7 @@ public class MyQueue
         Move();
         return _popStack.Pop();
     }
-    
+     
     /** Get the front element. */
     public int Peek() 
     {
@@ -47,12 +47,12 @@ public class MyQueue
     
     private void Move()
     {
-        if (_popStack.Count != 0)
+        if(_popStack.Count != 0)
             return;
         
-        while (_pushStack.Count != 0)
+        while(_pushStack.Count != 0)
         {
-            var m = _pushStack.Pop();
+            var m= _pushStack.Pop();
             _popStack.Push(m);
         }
     }
