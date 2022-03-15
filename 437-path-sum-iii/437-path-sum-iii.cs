@@ -12,18 +12,19 @@
  * }
  */
 public class Solution {
+    //O(n)
+    public Dictionary
+        <int, int> dict = new Dictionary<int, int>();
+    public int count = 0;
     
-    public Dictionary<int,int> prefixSum = new Dictionary<int,int>();
-    public int cnt = 0;
-    
-    public int PathSum(TreeNode root, int targetSum) {
-        
+    public int PathSum(TreeNode root, int targetSum)
+    {
         if(root == null)
             return 0;
         
-        prefixSum.Add(0,1);
+        dict.Add(0,1);
         dfs(root, 0, targetSum);
-        return cnt;
+        return count;
     }
     
     private void dfs(TreeNode node, int currSum, int targetSum)
@@ -33,17 +34,17 @@ public class Solution {
         
         currSum += node.val;
         
-        if(prefixSum.ContainsKey(currSum - targetSum))
-            cnt += prefixSum[currSum - targetSum];     
+        if(dict.ContainsKey(currSum - targetSum))
+            count += dict[currSum - targetSum];
         
-        if(prefixSum.ContainsKey(currSum))
-            prefixSum[currSum]++;
+        if(dict.ContainsKey(currSum))
+            dict[currSum]++;
         else
-            prefixSum.Add(currSum,1);
+            dict.Add(currSum, 1);
         
         dfs(node.left, currSum, targetSum);
         dfs(node.right, currSum, targetSum);
         
-        prefixSum[currSum]--;
+        dict[currSum]--;
     }
 }
