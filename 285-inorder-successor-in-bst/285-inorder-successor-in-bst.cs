@@ -9,18 +9,21 @@
  */
 public class Solution {
     public TreeNode InorderSuccessor(TreeNode root, TreeNode p) {
-        //O(n) sc O(1)
-        TreeNode successor = null;
+       //O(nP sc O(1)
+       if(root == null) return null;
+       TreeNode successor = null;
         while(root != null)
         {
             if(p.val >= root.val)
+            {
                 root = root.right;
+            }
             else
             {
                 successor = root;
                 root = root.left;
             }
         }
-        return successor;
+       return successor;
     }
 }
