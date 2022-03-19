@@ -16,13 +16,13 @@ public class Solution {
         return GoodNodes(root, int.MinValue);
     }
     
-    private int GoodNodes(TreeNode root, long max)
+    public int GoodNodes(TreeNode root, int max)
     {
         if(root == null) return 0;
         
-        max = Math.Max(root.val, max);
+        max = Math.Max(max, root.val);
         int count = max <= root.val ? 1 : 0;
+        
         return count + GoodNodes(root.left, max) + GoodNodes(root.right, max);
     }
 }
-
