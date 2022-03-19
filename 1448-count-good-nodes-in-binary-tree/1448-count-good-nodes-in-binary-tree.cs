@@ -21,7 +21,7 @@ public class Solution {
         if(root == null) return 0;
         
         max = Math.Max(max, root.val);
-        int count = max <= root.val ? 1 : 0;
+        int count = (max <= root.val) ? 1 : 0;
         
         return count + GoodNodes(root.left, max) + GoodNodes(root.right, max);
     }
