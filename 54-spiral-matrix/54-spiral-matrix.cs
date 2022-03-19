@@ -1,4 +1,5 @@
 public class Solution {
+    //O(m * n) sc O(1)
     public IList<int> SpiralOrder(int[][] matrix) {
         List<int> nums = new List<int>();
         if(matrix.Length == 0 || matrix == null)
