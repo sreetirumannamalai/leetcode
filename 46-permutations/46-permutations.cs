@@ -14,7 +14,7 @@ public class Solution {
         }
         else
         {
-            for(int i =0;i<nums.Length;i++)
+            for(int i=0;i<nums.Length;i++)
             {
                 if(list.Contains(nums[i]))
                     continue;
