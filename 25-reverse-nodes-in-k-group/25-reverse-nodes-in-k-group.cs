@@ -13,49 +13,43 @@ public class Solution {
     //O(n) sc O(1)
     public ListNode ReverseKGroup(ListNode head, int k) {
         if(head == null) return null;
-        
-        ListNode dummy = new ListNode();
+       
+       ListNode dummy = new ListNode();
         dummy.next = head;
+        ListNode current = dummy;
         ListNode prev = dummy;
-        ListNode curr = dummy;
         ListNode next = null;
-        while(curr != null)
+        while(current!=null)
         {
-            for(int i =0;i<k && curr!=null; i++)
-            {
-                curr = curr.next;
-            }
+            for(int i=0;i<k&& current!=null; i++)
+                current= current.next;
             
-            if(curr == null) break;
+            if(current==null) break;
             
-            next = curr.next;
-            curr.next = null;
+            next = current.next;
+            current.next = null;
             
             ListNode start = prev.next;
             prev.next = Reverse(start);
             start.next = next;
             
             prev = start;
-            curr = start;
+            current = start;
         }
         return dummy.next;
     }
-    
-    public ListNode Reverse(ListNode head)
-    {
-        if(head == null || head.next == null)
-            return head;
+   
+    public ListNode Reverse(ListNode head) {
+       if(head == null) return null;
         
+        ListNode current = head;
         ListNode prev = null;
-        ListNode next = prev;
-        ListNode curr = head;
-        
-        while(curr!=null)
+        while(current != null)
         {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+            ListNode temp = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp;
         }
         return prev;
     }
