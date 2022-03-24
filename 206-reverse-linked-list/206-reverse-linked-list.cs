@@ -10,17 +10,19 @@
  * }
  */
 public class Solution {
+    //O(n) sc O(1)
     public ListNode ReverseList(ListNode head) {
-        if(head == null) return null;
+       if(head == null) return null;
         
+        ListNode current = head;
         ListNode prev = null;
-        while(head != null)
+        while(current != null)
         {
-            ListNode next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
+            ListNode temp = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp;
         }
-        return prev; 
+        return prev;
     }
 }
