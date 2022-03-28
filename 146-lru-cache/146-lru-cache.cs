@@ -9,17 +9,17 @@ public class LRUCache {
             this.cachevalue = value;
         }
     }
-    int capacity = 0;
-    Dictionary<int, LinkedListNode<Cache>> dict = new Dictionary<int, LinkedListNode<Cache>>();
-    LinkedList<Cache> lruCache = new LinkedList<Cache>();
     
-    public LRUCache(int capacity)
-    {
+    public int capacity = 0;
+    Dictionary<int, LinkedListNode<Cache>> dict = new Dictionary<int, LinkedListNode<Cache>>();
+    LinkedList<Cache> lruCache;
+    
+    public LRUCache(int capacity) {
         this.capacity = capacity;
+        lruCache = new LinkedList<Cache>();
     }
-      
-    public int Get(int key)
-    {
+    
+    public int Get(int key) {
         if(!dict.ContainsKey(key))
             return -1;
         
@@ -29,8 +29,7 @@ public class LRUCache {
         return cache.Value.cachevalue;
     }
     
-    public void Put(int key, int value)
-    {
+    public void Put(int key, int value) {
         if(dict.ContainsKey(key))
         {
             dict[key].Value.cachevalue = value;
