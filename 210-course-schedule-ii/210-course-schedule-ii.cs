@@ -5,8 +5,8 @@ public class Solution {
     Stack<int> stack;
     public int[] FindOrder(int numCourses, int[][] prerequisites) {
         graph = new Dictionary<int, List<int>>();
-        explored = new bool[numCourses];
         visited = new bool[numCourses];
+        explored = new bool[numCourses];
         stack = new Stack<int>();
         
         for(int i=0;i<numCourses;i++)
@@ -24,12 +24,14 @@ public class Solution {
             if(!visited[i])
             {
                 if(hasCycle(i))
+                {
                     return new int[]{};
+                }
             }
         }
         
         visited = new bool[numCourses];
-                
+        
         for(int i=0;i<numCourses;i++)
         {
             if(!visited[i])
