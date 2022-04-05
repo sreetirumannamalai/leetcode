@@ -1,8 +1,9 @@
 public class RandomizedSet {
-    //O(1) sc O(n)
+   //O(1) sc O(n)
     HashSet<int> set;
     List<int> list;
     Random random;
+    
     public RandomizedSet() {
         random = new Random();
         set = new HashSet<int>();
@@ -12,7 +13,7 @@ public class RandomizedSet {
     public bool Insert(int val) {
         if(set.Contains(val))
             return false;
-        else 
+        else
         {
             set.Add(val);
             list.Add(val);
