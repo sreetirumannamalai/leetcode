@@ -1,33 +1,33 @@
 public class FreqStack {
-    //O(1) sc O(n)
+   // O(1) sc O(n)
     private int maxFreq = 0;
-    private Dictionary<int, int> freq; //number, occurrence
-    private Dictionary<int, Stack<int>> maxFreqs;// occurrence, numbers
+    private Dictionary<int, int> freq; //number, occurence
+    private Dictionary<int, Stack<int>> maxFreqs; //occurence, numbers
     
     public FreqStack() {
         freq = new Dictionary<int, int>();
         maxFreqs = new Dictionary<int, Stack<int>>();
     }
     
-   public void Push(int x) {
-        if(freq.ContainsKey(x))
-            freq[x]++;
+    public void Push(int val) {
+        if(freq.ContainsKey(val))
+            freq[val]++;
         else
-            freq.Add(x,1);
+            freq.Add(val, 1);
         
-        maxFreq = Math.Max(maxFreq, freq[x]);
+        maxFreq = Math.Max(maxFreq, freq[val]);
         
-        if(maxFreqs.ContainsKey(freq[x]))
-            maxFreqs[freq[x]].Push(x);
+        if(maxFreqs.ContainsKey(freq[val]))
+            maxFreqs[freq[val]].Push(val);
         else
         {
             Stack<int> stack = new Stack<int>();
-            stack.Push(x);
-            maxFreqs.Add(freq[x], stack);
-        }           
+            stack.Push(val);
+            maxFreqs.Add(freq[val], stack);
+        }
     }
     
-   public int Pop() {
+    public int Pop() {
         int res = maxFreqs[maxFreq].Pop();
         
         freq[res]--;
@@ -45,4 +45,3 @@ public class FreqStack {
  * obj.Push(val);
  * int param_2 = obj.Pop();
  */
- 
