@@ -1,4 +1,5 @@
 public class Solution {
+    //O(E+V) sc O(E+V)
     public int CountComponents(int n, int[][] edges) {
         if(edges.Length == 0) return n;
         
