@@ -5,14 +5,14 @@ public class LRUCache {
         public int cachevalue;
         public Cache(int key, int value)
         {
-            this.cachekey = key;
-            this.cachevalue = value;
+            cachekey = key;
+            cachevalue = value;
         }
     }
     
-    public int capacity = 0;
     Dictionary<int, LinkedListNode<Cache>> dict = new Dictionary<int, LinkedListNode<Cache>>();
     LinkedList<Cache> lruCache;
+    int capacity = 0;
     
     public LRUCache(int capacity) {
         this.capacity = capacity;
