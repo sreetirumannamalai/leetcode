@@ -1,27 +1,27 @@
 public class LRUCache {
-    public class Cache
-    {
-        public int cachekey;
-        public int cachevalue;
-        public Cache(int key, int value)
-        {
-            cachekey = key;
-            cachevalue = value;
-        }
-    }
+   public class Cache
+   {
+       public int cachekey;
+       public int cachevalue;
+       public Cache(int key, int value)
+       {
+           cachekey = key;
+           cachevalue = value;
+       }
+   }
     
+    int capacity =0;
     Dictionary<int, LinkedListNode<Cache>> dict = new Dictionary<int, LinkedListNode<Cache>>();
     LinkedList<Cache> lruCache;
-    int capacity = 0;
     
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        lruCache = new LinkedList<Cache>();
+        lruCache = new LinkedList<Cache>();        
     }
     
     public int Get(int key) {
-        if(!dict.ContainsKey(key))
-            return -1;
+       if(!dict.ContainsKey(key))
+           return -1;
         
         LinkedListNode<Cache> cache = dict[key];
         lruCache.Remove(cache);
