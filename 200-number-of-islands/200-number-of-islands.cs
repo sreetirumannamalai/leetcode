@@ -1,4 +1,5 @@
 public class Solution {
+    //O(m * n) sc O(m * n)
     public int NumIslands(char[][] grid) {
         if(grid.Length == 0)
             return 0;
