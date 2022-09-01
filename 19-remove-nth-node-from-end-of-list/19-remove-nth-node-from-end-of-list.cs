@@ -10,27 +10,30 @@
  * }
  */
 public class Solution {
+    //TC O(n) SC O(1)
     public ListNode RemoveNthFromEnd(ListNode head, int n) {
-       if(head == null) return null;
-        int length =0;
-        ListNode current = head;
-        while(current != null)
+        if(head == null) return null;
+        
+        ListNode currentNode = head;
+        for(int i=0;i<n;i++)
         {
-            current = current.next;
-            length++;
+            currentNode = currentNode.next;
         }
-        if(length == n)
+        
+        if(currentNode ==null)
+        {
             return head.next;
-        
-        //Find node to remove - index = length - n - 1
-        
-        int nodeBeforeRemovedIndex = length - n - 1;
-        current = head;
-        for(int i =0;i<nodeBeforeRemovedIndex;i++)
-        {
-            current = current.next;
         }
-        current.next = current.next.next;
+        
+        ListNode nodeBeforeRemoved = head;
+        
+        while(currentNode.next != null)
+        {
+            currentNode = currentNode.next;
+            nodeBeforeRemoved = nodeBeforeRemoved.next;
+        }
+        
+        nodeBeforeRemoved.next = nodeBeforeRemoved.next.next;
         return head;
     }
 }
