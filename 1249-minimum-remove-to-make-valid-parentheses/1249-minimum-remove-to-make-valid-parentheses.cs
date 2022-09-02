@@ -1,32 +1,32 @@
 public class Solution {
     public string MinRemoveToMakeValid(string s) {
         if(s.Length == 0 || s == null) return null;
+        int open =0;
         StringBuilder sb = new StringBuilder();
-        int open = 0;
-        foreach(char c in s)
+        foreach(char c in s.ToCharArray())
         {
             if(c == '(')
                 open++;
             else if(c == ')')
             {
-                if(open==0) 
-                    continue;
+                if(open == 0) continue;
+                
                 open--;
             }
             sb.Append(c);
         }
+        
         StringBuilder result = new StringBuilder();
-        for(int i=sb.Length - 1;i >= 0;i--)
+        for(int i=sb.Length -1; i>=0;i--)
         {
             if(sb[i] == '(' && open-- > 0)
                 continue;
-            
+                
             result.Append(sb[i]);
         }
-       string aa = result.ToString();
-
-       var str = aa.ToCharArray().Reverse();
-
-       return new string(str.ToArray());
+        
+        string aa = result.ToString();
+        return new string(aa.ToCharArray().Reverse().ToArray());
     }
 }
+ 
