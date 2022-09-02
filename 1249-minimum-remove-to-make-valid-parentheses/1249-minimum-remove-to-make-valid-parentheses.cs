@@ -1,4 +1,5 @@
 public class Solution {
+    //TC O(n) SC O(n)
     public string MinRemoveToMakeValid(string s) {
         if(s.Length == 0 || s == null) return null;
         int open =0;
