@@ -12,19 +12,19 @@ public class Solution {
     //Lowest Common Ancestor of a Binary Tree III
     //TC O(n) SC O(n)
     public Node LowestCommonAncestor(Node p, Node q) {
-        HashSet<Node> pAncesstors = new HashSet<Node>();
+        HashSet<Node> pAncestor = new HashSet<Node>();
         while(p!=null)
         {
-            pAncesstors.Add(p);
+            pAncestor.Add(p);
             p=p.parent;
         }
         
         while(q!=null)
         {
-            if(pAncesstors.Contains(q))
+            if(pAncestor.Contains(q))
                 return q;
             
-            q=q.parent;
+            q = q.parent;
         }
         return null;
     }
