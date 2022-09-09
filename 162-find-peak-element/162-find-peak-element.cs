@@ -1,4 +1,5 @@
 public class Solution {
+    //Find Peak Element
     //Time complexity :O(log2(n)). We reduce the search space in half at every step. Thus, the total search space will be consumed in log2(n) steps. Here, nn refers to the size of numsnums array.
     //Space complexity : O(1). Constant extra space is used. 
     public int FindPeakElement(int[] nums) {
