@@ -3,13 +3,14 @@ public class Solution {
       //TC O(n)in average case O(n2) in worst case SC O(1)
       public int FindKthLargest(int[] arr, int k)
       {
-           int low = 0;
-          int high = arr.Length - 1;
+          int i = 0;
+          int j = arr.Length - 1;
           int n = arr.Length;
-          int pivot = FindKthLargest(arr, n-k, low, high);
-          return pivot;
+          
+         int result = FindKthLargest(arr, n-k, i, j);
+         return result;
       }
-    
+
     public int FindKthLargest(int[] arr, int k, int low, int high)
     {
         int pivotPoint = GetPivotPoint(arr, low, high);
