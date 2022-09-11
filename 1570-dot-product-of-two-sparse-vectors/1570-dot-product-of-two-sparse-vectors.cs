@@ -1,8 +1,8 @@
 public class SparseVector {
     //Dot Product of Two Sparse Vectors
    //Let nn be the length of the input array and LL be the number of non-zero elements.
-   //Time complexity: O(n)O(n) for creating the Hash Map; O(L)O(L) for calculating the dot product.
-   //Space complexity: O(L)O(L) for creating the Hash Map, as we only store elements that are non-zero. O(1)O(1) for calculating the dot product.
+   //Time complexity: O(n) for creating the Hash Map; O(L) for calculating the dot product.
+   //Space complexity: O(L) for creating the Hash Map, as we only store elements that are non-zero. O(1) for calculating the dot product.
     Dictionary<int ,int> indexAndValueDict = new Dictionary<int, int>();
     public SparseVector(int[] nums) {
         for(int i=0;i<nums.Length;i++)
