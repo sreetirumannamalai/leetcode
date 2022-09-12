@@ -2,41 +2,40 @@ public class Solution {
     //Simplify Path
     //TC O(n) SC O(n);
    public string SimplifyPath(string path) {
-       string[] components = path.Split('/');
+      if(path.Length == 0 || path == null) return null;
        Stack<string> stk = new Stack<string>();
-       for(int i =0;i<components.Length;i++)
+       string[] components = path.Split("/");
+       for(int i= 0;i<components.Length;i++)
        {
            switch(components[i])
            {
                case ".":
                case "" :
-                  break;
+                   break;
                case "..":
-               if(stk.Count > 0)
-               {
-                   stk.Pop();
-               }
-               break;
+                   if(stk.Count > 0)
+                   {
+                     stk.Pop();
+                   }
+                   break;
                default:
                    stk.Push(components[i]);
                    break;
-           }
+           }    
        }
-         
-       StringBuilder res = new StringBuilder();
+       StringBuilder sb = new StringBuilder();
        List<string> list = new List<string>();
-       
        while(stk.Count > 0)
        {
-            list.Add(stk.Pop());
-       }
-         
-       for(int i=list.Count - 1; i >= 0; i--)
-       {
-            res.Append("/");
-            res.Append(list[i]);
+           list.Add(stk.Pop());
        }
        
-        return res.Length > 0 ? res.ToString() : "/"; 
-    }
+       for(int i = list.Count - 1; i >=0; i--)
+       {
+           sb.Append("/");
+           sb.Append(list[i]);
+       }
+       
+       return sb.Length > 0 ? sb.ToString() : "/";
+   }
 }
