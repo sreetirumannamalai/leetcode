@@ -1,4 +1,6 @@
 public class Solution {
+    //Valid word abbreviation
+    //TC O(n) SC O(1)
     public bool ValidWordAbbreviation(string word, string abbr) {
         int pos = 0;
         int count = 0;
