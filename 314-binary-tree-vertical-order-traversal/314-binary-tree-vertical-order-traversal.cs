@@ -12,6 +12,8 @@
  * }
  */
 public class Solution {
+    //Binary Tree Vertical order traversal
+    //TC O(n) SC O(n)
     public IList<IList<int>> VerticalOrder(TreeNode root) {
         if(root == null)
         {
