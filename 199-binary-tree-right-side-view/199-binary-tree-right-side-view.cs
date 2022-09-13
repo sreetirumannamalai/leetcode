@@ -12,27 +12,33 @@
  * }
  */
 public class Solution {
+    //Binary Tree right side view
+    //TC O(n) sc O(d) dis the diameter
     public IList<int> RightSideView(TreeNode root) {
         List<int> visibleValues = new List<int>();
         if(root == null) return visibleValues;
         
         TreeNode current = null;
-        Queue<TreeNode> queue = new Queue<TreeNode>();
-        queue.Enqueue(root);
-        while(queue.Count() != 0)
+        Queue<TreeNode> q = new Queue<TreeNode>();
+        q.Enqueue(root);
+        while(q.Count() != 0)
         {
-            int size = queue.Count();
-            for(int i=0;i<size;i++)
+            int size = q.Count;
+            for(int i =0;i<size;i++)
             {
-                current = queue.Dequeue();
+                current = q.Dequeue();
                 if(i==size-1)
                 {
                     visibleValues.Add(current.val);
                 }
                 if(current.left != null)
-                    queue.Enqueue(current.left);
+                {
+                    q.Enqueue(current.left);
+                }
                 if(current.right != null)
-                    queue.Enqueue(current.right);
+                {
+                    q.Enqueue(current.right);
+                }
             }
         }
         return visibleValues;
