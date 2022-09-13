@@ -14,31 +14,30 @@ public class Node {
 */
 
 public class Solution {
-    //O(n) sc O(1)
+    // Copy list with random pointer
+    //TC O(N) SC O(1)
     public Node CopyRandomList(Node head) {
-        if(head == null) return null;
+        if(head == null)
+            return null;
         
         Node current = head;
-        //step 1 - copy nodes and insert after actual nodes
         while(current != null)
         {
-            Node copy = new Node(current.val);
-            copy.next = current.next;
-            current.next = copy;
+            Node copyNode = new Node(current.val);
+            copyNode.next = current.next;
+            current.next = copyNode;
             current = current.next.next;
         }
         
-        //step 2 - map random pointer
         current = head;
         while(current != null)
         {
-            current.next.random = (current.random == null) ? null : current.random.next;
+            current.next.random = current.random == null ? null : current.random.next;
             current = current.next.next;
         }
-        
-        //step 3 - extract copy node
-        Node dummyhead = new Node(-1);
-        Node dummy = dummyhead;
+         
+        Node dummyHead = new Node(-1);
+        Node dummy = dummyHead;
         current = head;
         while(current != null)
         {
@@ -47,6 +46,6 @@ public class Solution {
             current.next = current.next.next;
             current = current.next;
         }
-        return dummyhead.next;
+        return dummyHead.next;
     }
 }
