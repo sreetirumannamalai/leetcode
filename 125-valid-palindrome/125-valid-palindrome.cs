@@ -1,4 +1,6 @@
 public class Solution {
+    //Valid Palindrome
+    //TC O(n) SC O(1)
     public bool IsPalindrome(string s) {
         if(s.Length == 0) return true;
         if(s == null) return false;
