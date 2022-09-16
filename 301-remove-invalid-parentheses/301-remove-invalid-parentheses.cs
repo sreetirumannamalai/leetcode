@@ -1,6 +1,6 @@
 public class Solution {
     //Remove Invalid Parentheses
-    //TC O(n2) SC O(n)
+    //TC O(2^n) SC O(n)
     public IList<string> RemoveInvalidParentheses(string s) 
     {
         var result = new List<string>();
